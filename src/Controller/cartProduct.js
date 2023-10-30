@@ -1,7 +1,7 @@
 const cartProduct = require('../Model/cartProduct');
 
 exports.get_allProductsCart = async (req, res) => {
-    cartProduct.findCartProducts(req.params.userId)
+    cartProduct.findAllCartProducts(req.params.userId)
     .then(data => res.status(200).json({data}))
     .catch(err => res.status(500).json(err));
 };
