@@ -14,6 +14,7 @@ cartProductSchema.statics.addCartProduct = function(aCartProduct){
 };
 
 cartProductSchema.statics.findAllCartProducts = function (userId){
+    console.log('This UserId :' + userId);
     return this.findMany({userId: {$in: userId}});
 };
 
