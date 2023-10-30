@@ -9,7 +9,7 @@ const cartProductSchema = new Schema({
     },
 })
 
-cartProductSchema.statics.addCartProduct = function(aCartProduct, cb){
+cartProductSchema.statics.addCartProduct = function(aCartProduct){
     return this.create(aCartProduct);
 };
 
