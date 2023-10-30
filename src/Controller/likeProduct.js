@@ -8,25 +8,25 @@ exports.post_likeList = async (req, res) => {
 };
 
 exports.get_likeList = async (req, res) => {
-    likeProduct.findLikeList(req.query.Id)
+    likeProduct.findLikeList(req.params.Id)
     .then(data => res.status(200).json({data}))
     .catch(err => res.status(500).json(err));
 }
 
 exports.delete_likeList = async (req, res) => {
-    likeProduct.removelikeList(req.query.Id)
+    likeProduct.removelikeList(req.params.Id)
     .then(data => res.status(200).json({data}))
     .catch(err => res.status(500).json(err));
 }
 
 exports.post_ProductLikeList = async (req, res) => {
-    likeProduct.addProductLikeList(req.query.Id, req.body.productId)
+    likeProduct.addProductLikeList(req.params.Id, req.body.productId)
     .then(data => res.status(200).json({data}))
     .catch(err => res.status(500).json(err));
 }
 
 exports.delete_ProductLikeList = async (req, res) => {
-    likeProduct.removeProductlikeList(req.query.Id, req.body.productId)
+    likeProduct.removeProductlikeList(req.params.Id, req.body.productId)
     .then(data => res.status(200).json({data}))
     .catch(err => res.status(500).json(err));
 }
