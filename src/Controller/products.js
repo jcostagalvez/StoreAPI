@@ -15,6 +15,7 @@ exports.post_product = async (req, res) => {
 }
 
 exports.get_product = async (req, res) => {
+    console.log('get_Product --> req.query.Id --> ' + req.query.Id);
     product.findProductByCode(req.query.Id)
     .then(data => res.status(200).json({data}))
     .catch(err => res.status(500).json(err));
