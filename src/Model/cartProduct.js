@@ -14,13 +14,11 @@ cartProductSchema.statics.addCartProduct = function(aCartProduct){
 };
 
 cartProductSchema.statics.findAllCartProducts = function (userId){
-    console.log('This UserId :' + userId);
     return this.find({userId: {$in: userId}});
 };
 
 
-cartProductSchema.statics.deleteCartProduct = function (userId, id){
-    const productId = mongoose.Types.ObjectId(id);
+cartProductSchema.statics.deleteCartProduct = function (userId, productId){
     return this.deleteOne({userId: userId , productId: productId});
 };
 
