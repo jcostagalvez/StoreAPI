@@ -20,7 +20,7 @@ cartProductSchema.statics.findAllCartProducts = function (userId){
 
 
 cartProductSchema.statics.deleteCartProduct = function (userId, productId){
-    return this.deleteOne({userId: userId , productId: productId});
+    return this.deleteOne({userId: userId , productId: `ObjectId(${productId})`});
 };
 
 cartProductSchema.statics.deleteAllCartProduct = function (userId){
