@@ -1,5 +1,4 @@
 const cartProduct = require('../Model/cartProduct');
-const ObjectID = require('mongodb').ObjectID;
 
 exports.get_allProductsCart = async (req, res) => {
     cartProduct.findAllCartProducts(req.params.userId)
@@ -15,7 +14,6 @@ exports.post_productCart = async (req, res) => {
 }
 
 exports.delete_productCart = async (req, res) => {
-    const productId = new ObjectID(req.body.productId);
     cartProduct.deleteCartProduct(req.params.userId, productId)
     .then(data => res.status(200).json({data}))
     .catch(err => res.status(500).json(err));

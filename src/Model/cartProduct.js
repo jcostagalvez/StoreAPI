@@ -18,8 +18,9 @@ cartProductSchema.statics.findAllCartProducts = function (userId){
 };
 
 
-cartProductSchema.statics.deleteCartProduct = function (userId, productId){
-    return this.deleteOne({userId: userId , productId: productId});
+cartProductSchema.statics.deleteCartProduct = function (userId, productId){ 
+    const _productId = mongoose.Types.ObjectId(productId);
+    return this.deleteOne({userId: userId , productId: _productId});
 };
 
 cartProductSchema.statics.deleteAllCartProduct = function (userId){
