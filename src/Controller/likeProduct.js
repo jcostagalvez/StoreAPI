@@ -24,8 +24,8 @@ exports.post_ProductLikeList = async (req, res) => {
     console.log(req.body.productsId);
     product.findProductByCode(req.body.productsId)
     .then(data => {
-        console.log('data.id:  ' + data.id);
-        likeProduct.addProductLikeList(req.params.Id, data.id)
+        console.log('data.id:  ' + data);
+        likeProduct.addProductLikeList(req.params.Id, data)
         .then(data => res.status(200).json({data}))
         .catch(err => {
             console.log(err)
