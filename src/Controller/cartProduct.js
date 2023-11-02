@@ -15,13 +15,15 @@ exports.post_productCart = async (req, res) => {
 }
 
 exports.delete_productCart = async (req, res) => {
-    const _productId = mongoose.Types.ObjectId(req.body.productId);
+    const _productId = new mongoose.mongo.ObjectId(req.body.productId);
+    console.log('_productId --->  ' + _productId);
     cartProduct.deleteCartProduct(req.params.userId, _productId)
     .then(data => res.status(200).json({data}))
     .catch(err => res.status(500).json(err));
 }
 
 exports.delete_allProductCart = async (req, res) => {
+    console.log(req.params.userId);
     cartProduct.deleteAllCartProduct(req.params.userId)
     .then(data => res.status(200).json({data}))
     .catch(err => res.status(500).json(err));

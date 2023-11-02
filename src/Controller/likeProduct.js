@@ -1,4 +1,5 @@
 const likeProduct = require('../Model/likeProduct');
+const product = require('../Model/products');
 
 exports.post_likeList = async (req, res) => {
     const likeList = req.body;
@@ -20,13 +21,30 @@ exports.delete_likeList = async (req, res) => {
 }
 
 exports.post_ProductLikeList = async (req, res) => {
-    likeProduct.addProductLikeList(req.params.Id, req.body.productId)
-    .then(data => res.status(200).json({data}))
-    .catch(err => res.status(500).json(err));
+    console.log(req.body.productsId);
+    product.findProductByCode(req.body.productsId)
+    .then(data => {
+        console.log('data.id:  ' + data.id);
+        likeProduct.addProductLikeList(req.params.Id, data.id)
+        .then(data => res.status(200).json({data}))
+        .catch(err => {
+            console.log(err)
+            res.status(500).json(err)
+        });
+    })
+    .catch(err => res.status(500).json(err))
 }
 
-exports.delete_ProductLikeList = async (req, res) => {
-    likeProduct.removeProductlikeList(req.params.Id, req.body.productId)
-    .then(data => res.status(200).json({data}))
-    .catch(err => res.status(500).json(err));
+exports.delete_ProductLikeList = async (req, res) => {    
+    product.findProductByCode(req.body.productsId)
+    .then(data => {
+        console.log(data);
+        likeProduct.removeProductlikeList(req.params.Id, data.id)
+        .then(data => res.status(200).json({data}))
+        .catch(err => {
+            console.log(err)
+            res.status(500).json(err)
+        });
+    })
+    .catch(err => res.status(500).json(err))
 }
