@@ -1,5 +1,6 @@
 var express = require('express');
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
+const cors = require('cors');
 const app = express();
 const productsRouter = require('./Routes/products');
 const cartProductsRouter = require('./Routes/cartProduct.js');
@@ -12,7 +13,7 @@ db.on('error', console.error.bind(console, 'connection error'));
 db.once('open', function callback(){
     console.log('Connected sucesfully')
 });
-
+app.use(cors());
 app.use(express.json());
 app.use('/products', productsRouter);
 app.use('/cart', cartProductsRouter);
