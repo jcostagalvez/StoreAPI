@@ -24,6 +24,7 @@ exports.post_photo = async (req, res) => {
     if(req.file){
         const url = req.url.split('/');
         const sizeUrl = url.length;
+        req.img = req.file.buffer;
         product.uploadImg(url[sizeUrl-1], req.img.toString("base64"))
        .then((data) => {
         res.status(200).json({data})})
