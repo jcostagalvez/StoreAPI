@@ -7,6 +7,9 @@ const cartProductSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'Product'
     },
+    size: {
+        type: String
+    }
 })
 
 cartProductSchema.statics.addCartProduct = function(aCartProduct){
@@ -18,8 +21,8 @@ cartProductSchema.statics.findAllCartProducts = function (userId){
 };
 
 
-cartProductSchema.statics.deleteCartProduct = function (userId, productId){ 
-    return this.deleteOne({userId: userId , productId: productId});
+cartProductSchema.statics.deleteCartProduct = function (userId, id){ 
+    return this.deleteOne({userId: userId , _id: id});
 };
 
 cartProductSchema.statics.deleteAllCartProduct = function (userId){

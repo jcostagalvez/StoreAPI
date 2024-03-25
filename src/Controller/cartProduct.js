@@ -15,9 +15,9 @@ exports.post_productCart = async (req, res) => {
 }
 
 exports.delete_productCart = async (req, res) => {
-    const _productId = new mongoose.mongo.ObjectId(req.body.productId);
-    console.log('_productId --->  ' + _productId);
-    cartProduct.deleteCartProduct(req.params.userId, _productId)
+    const id = new mongoose.mongo.ObjectId(req.body.id);
+    console.log('_productId --->  ' + id);
+    cartProduct.deleteCartProduct(req.params.userId, id)
     .then(data => res.status(200).json({data}))
     .catch(err => res.status(500).json(err));
 }
